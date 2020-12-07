@@ -61,21 +61,12 @@ for passport_text in passports:
     passport[ k ] = v
 
   is_valid = 1
-  print( "" )
-  print( f"Checking '{ passport_text }'" )
-  print( f"Checking '{ passport }'" )
   for key, validator in mandatory.items():
     if key not in passport:
-      print( f"Invalid: {key} not present" )
       is_valid = 0
     elif not validator( passport[ key ] ):
-      print( f"Invalid: the value for {key} does not match pattern" )
       is_valid = 0
 
-  if is_valid:
-    print( "VALID" )
-
   valid += is_valid
-
 
 print( f"Valid: {valid}" )
