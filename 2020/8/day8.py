@@ -13,7 +13,7 @@ class InfiniteLoop( Exception ):
 
 def Run( program, patch_instruction = None ):
   acc = 0
-  trace = []
+  trace = set()
   pc = 0
 
   while pc < len( program ):
@@ -22,7 +22,7 @@ def Run( program, patch_instruction = None ):
         f"Loop detected with accumulator: { acc } at pc { pc }" )
 
     i = program[ pc ]
-    trace.append( pc )
+    trace.add( pc )
 
     if i.inst == 'acc':
       acc += i.operand
