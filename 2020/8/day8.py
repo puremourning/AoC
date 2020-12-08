@@ -11,7 +11,7 @@ class InfiniteLoop( Exception ):
   pass
 
 
-def Run( program, patch_instruction = None ):
+def Run( patch_instruction = None ):
   acc = 0
   trace = set()
   pc = 0
@@ -57,7 +57,7 @@ for line in lines:
 print( "Part1:" )
 
 try:
-  acc = Run( program )
+  Run()
 except InfiniteLoop as e:
   print( str( e ) )
 
@@ -65,7 +65,7 @@ print( "Part2:" )
 
 for to_patch in range( len( program ) ):
   try:
-    acc = Run( program, to_patch )
+    Run( to_patch )
     break
   except InfiniteLoop:
     pass
